@@ -183,16 +183,11 @@ function paymentReturn(request, response) {
             // Figure out new membership ending date
             // 1 year mebership (5€)
             if (payment.productId === '1111') {
-              membershipEnds = moment(currentYear + '-12-31').toDate()
+              membershipEnds = moment(currentYear + '-07-31').toDate()
               // 5 year mebership (20€)
             } else if (payment.productId === '1555') {
-              membershipEnds = moment(currentYear + '-12-31')
+              membershipEnds = moment(currentYear + '-07-31')
                 .add(4, 'y')
-                .toDate()
-              // "Piltti"-offer: to the end of current year + 1 year (7€)
-            } else if (payment.productId === '1222') {
-              membershipEnds = moment(currentYear + '-12-31')
-                .add(1, 'y')
                 .toDate()
             } else {
               return response.json(httpResponses.onPaymentError)
@@ -312,7 +307,7 @@ function paymentReturn(request, response) {
             }
             console.log('endyear: ' + endYear)
             memberUpdate = {
-              membershipEnds: moment(endYear + '-12-31').toDate(),
+              membershipEnds: moment(endYear + '-07-31').toDate(),
             }
             // 5 year mebership (20€)
           } else if (payment.productId === '1555') {
@@ -323,7 +318,7 @@ function paymentReturn(request, response) {
               endYear = currentEndYear + 5
             }
             memberUpdate = {
-              membershipEnds: moment(endYear + '-12-31').toDate(),
+              membershipEnds: moment(endYear + '-07-31').toDate(),
             }
           } else {
             return response.json(httpResponses.onPaymentError)
